@@ -1,0 +1,47 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# Compiled files
+*.pdf
+*.dvi
+*.ps
+
+# Backup files
+*~
+*.bak
+*.sav
+*.swp
+*.swo
+
+# Editors
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# latexmk or arara specific
+latex.out
