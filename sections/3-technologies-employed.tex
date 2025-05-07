@@ -1,0 +1,91 @@
+\section{Technologies Employed}
+\label{sec:technologies-employed}
+% libraries used in project
+To construct the prototype system the language of implementation had to be considered to ensure they align with the goals set out for this prototype.
+Various libraries had to be considered and selected.
+Libraries for three-dimensional graphics, VR embedded environment, web-Socket connections, peer-to-peer connections, and data transfer.
+With the creation of packages easily integrated using package managers, there are many to choose from with varying degrees of functionality, documentation, community support, and how well it would fit with the other packages already used.
+When selecting one of these packages or libraries these aspects must be considered before attempting to integrate it into the system.
+%   the community support
+%   the developer support 
+%   the capabilities of the package itself
+%   how it would fit together with the other packages already used
+The consequence for selecting a sub-optimal package which is not suited for the needs of the system could have potential cascading effects and could potentially force the deprecation of some libraries used in the prototype.
+This ultimately wastes development time and negatively impacts the timeline for completion
+Many of the architectural and system choices were decided on because they are also used in CARTA's architecture.
+Which will be explain in the packages respective sections.
+
+\subsection{React}
+A free and open-source JavaScript library is used for building user-oriented applications based on components. It can be employed to develop single-page, mobile, or server-rendered applications. It is maintained by Meta and a community of individual developers as well as companies.
+
+React.js is the chosen front-end framework to implement the web application's front-end for VRDAVis. The motivation behind this decision is to replicate architectural choices from the CARTA system, as CARTA also utilised React.js to implement its front-end application.
+
+\subsection{WebRTC}
+Web Real-Time Communication (WebRTC)~\cite{Blum2021} is an internet communication protocol that enables web applications to stream audio, video, or data between peer browser windows, without the need for the data to be routed through an intermediary such as a server. It facilitates peer-to-peer communication without requiring additional third-party packages.
+% facilitates peer-to-peer without requiring plug-ins or third-party software to be installed
+% support for audio and video conferencing, file exchange, screen sharing, identity management, and interfacing with legacy telephone
+
+It is used in VRDAVis to establish a connection between a front-end instance on a desktop computer browser and an instance on a standalone headset browser. This connection is then utilised to transmit data regarding the application's state between the peers, allowing the user to seamlessly continue their work without needing to repeat steps on another device.
+% used to create a peer-to-peer connection between browser instances on different devices
+% used to send data between the broswer instances 
+
+% chosen for its functinality to create peer-to-peer connections
+
+\subsection{Three.js}
+The framework Three.js~\cite{Danchilla2012} is a cross-browser JavaScript library built on top of WebGL. 
+It is utilised for creating and animating three-dimensional computer graphics within web browsers.
+
+In VRDAVis, it finds application in implementing assets within the virtual environment or three-dimensional space. Three.js is widely adopted and benefits from an active community, offering robust support. Moreover, it can be seamlessly integrated with React.
+
+\subsection{WebXR}
+WebXR provides access to both input data, related to the pose information from the headset and controllers, and output, which is the display within the headset. This technology enables web browsers to facilitate Virtual Reality (VR) and Augmented Reality (AR) experiences over the internet. It encompasses functionalities commonly associated with VR and AR devices.
+
+In VRDAVis, WebXR is employed to integrate an embedded VR environment into the client web application. It works in conjunction with Three.js and React.js to create an immersive three-dimensional environment, constituting the VRDAVis front-end application.
+
+\subsection{MobX}
+This is a state management library designed for front-end web browser applications, responsible for maintaining stateful information. It seamlessly integrates into React and is also utilised for state management within the CARTA framework.
+
+\subsection{Node.js}
+Also refereed to a Node is a free, open-source server environment, with cross-platform capabilities which uses JavaScript to create server-side tools
+Node uses asynchronous programming which is a different manner to handle HTTP requests compared to PHP or ASP.
+In Node, the server receives a request task, this request task could be to open a file in the file system. 
+Node send the task to the file system and prepares to handle next request. 
+When the file system has opened and read the file, the server returns the content to the client.
+Whereas PHP sends the task to the computer's file system, waits for the file system to complete it's task and returns the content to the client. 
+Only once a task is complete is the server ready to handle the next request.
+Asynchronous programming eliminates waiting and just continues with the next request.
+% runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient
+
+VRDAVis utilises Node to implement the signalling server to facilitate and manage peer-to-peer connections between the instances of the front-end web applications.
+It was chosen because simple servers can be implemented quickly.
+While the tasks which is has to perform are not as performance sensitive as the actions the data server has to undertake, therefore performance and speed are not prioritised.
+
+\subsection{Express}
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications.
+It is one of the most popular Node web frameworks.
+Provides functionality to write handlers for HTTP requests at different URL paths also know as routes.
+It is integrated with view rendering engines to generate responses by inserting data into templates.
+It has the functionality to set common web application settings like the port for connecting, and the location of templates that are used for rendering the response.
+It can also add additional request processing know as middleware at any point within the request handling pipeline for additional functionality such as authentication.
+
+It is used on the VRDAVis signalling server to implement the WebSocket connection functionality and was chosen because of its flexibility and the speed at which prototype systems can be implemented.
+
+\subsection{C++}
+This is a high-level, general-purpose programming language employed to implement the data server of VRDAVis remote services. It's an object-oriented programming language that was initially released in 1985 as an extension of the C programming language, with a focus on performance, efficiency, and flexibility as its primary features.
+
+Its rapid execution and performance-oriented nature are precisely why it is selected for use. Additionally, this is the same language utilised in implementing the CARTA back-end.
+
+\subsection{HDF5 C++ Library}
+HDF5 is the selected file format for data storage on the remote data server, primarily employed for storing three-dimensional astronomy data cubes. The HDF5 C++ library is utilised to read the files stored on the server. Initially written in C, the C++ package encapsulates the Python code into a format that can be interfaced with C++.
+
+The decision to use the HDF5 format is based on its emphasis on performance, allowing rapid reading and writing of data to files, as well as the capability to instantly access any part of the file.
+
+\subsection{uWebSockets}
+This is employed in building the C++ web server and enables the establishment of WebSocket connections on the remote data server in C++. This choice was made to align with architectural decisions similar to those of CARTA.
+
+\subsection{Protocol Buffer}
+A language and platform-neutral mechanism for converting data objects into a byte stream for transfer.
+% serialisation -> process of converting data type objects into a byte stream for transfer
+It enables you to define the structure of messages and facilitates the reading and writing of structured data to and from various data streams using different programming languages.
+
+This technology is used to define a schema and format for data exchanged between the front-end and remote services. It was chosen due to its error-prevention capabilities and greater effectiveness compared to JSON.

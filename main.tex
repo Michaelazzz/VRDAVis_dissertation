@@ -1,0 +1,99 @@
+% \documentclass[acmtog, screen, nonacm]{acmart}
+% \documentclass[manuscript, screen, review]{acmart}
+\documentclass[screen, nonacm]{acmart}
+% \settopmatter{printacmref=false}
+% \renewcommand\footnotetextcopyrightpermission[1]{}
+% \setcopyright{none}
+\usepackage[utf8]{inputenc}
+% \usepackage[margin=3cm]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{./figures/}}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{xparse}
+\usepackage{enumitem}
+\setlist[description]{
+  font={\sffamily\bfseries},
+  labelsep=0pt,
+  labelwidth=\transcriptlen,
+  leftmargin=\transcriptlen,
+}
+
+\newlength{\transcriptlen}
+
+\NewDocumentCommand {\setspeaker} { mo } {\IfNoValueTF{#2}
+  {\expandafter\newcommand\csname#1\endcsname{\item[#1:]}}%
+  {\expandafter\newcommand\csname#1\endcsname{\item[#2:]}}%
+  \IfNoValueTF{#2}
+  {\settowidth{\transcriptlen}{#1}}%
+  {\settowidth{\transcriptlen}{#2}}%
+}
+
+% Easiest to put the longest name last...
+\setspeaker{mich}[Interviewer]
+\setspeaker{alex}[Participant 1]
+\setspeaker{lucia}[Participant 2]
+\setspeaker{sushma}[Participant 3]
+\setspeaker{omri}[Participant 4]
+\setspeaker{nabeelah}[Participant 5]
+\setspeaker{kyra}[Participant 6]
+\setspeaker{henco}[Participant 7]
+
+% How much of a gap between speakers and text?
+\addtolength{\transcriptlen}{1em}%
+
+\citestyle{acmauthoryear}
+
+\begin{document}
+\title{VRDAVis: Remote Visualisation of Astronomy Data with a Standalone Virtual Reality Device}
+\subtitle{Master of Science Dissertation}
+\input{author.tex}
+
+\input{sections/0-abstract}
+
+\maketitle % title page
+\pagestyle{plain}
+% Acknoledgements
+% Table of contents
+
+% \tableofcontents
+% List of figures and tables
+% List of abbreviations
+
+% sections
+\newpage
+\input{sections/1-introduction}
+\newpage
+\input{sections/2-literature-review}
+\newpage
+\input{sections/4-system-design}
+\newpage
+\input{sections/5-initial-evaluation}
+\newpage
+\input{sections/6-evaluation-results}
+\newpage
+\input{sections/7-conclusion}
+
+% \bibliographystyle{acm}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+% \newpage
+% \appendix
+% \section{Participant 1}
+% \input{transcripts/participant-1}
+% \section{Participant 2}
+% \input{transcripts/participant-2}
+% \section{Participant 3}
+% \input{transcripts/participant-3}
+% \section{Participant 4}
+% \input{transcripts/participant-4}
+% \section{Participant 5}
+% \input{transcripts/participant-5}
+% \section{Participant 6}
+% \input{transcripts/participant-6}
+% \section{Participant 7}
+% \input{transcripts/participant-7}
+
+\end{document}

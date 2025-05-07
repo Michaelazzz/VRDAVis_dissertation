@@ -1,0 +1,101 @@
+\subsection{Findings}
+\label{sec:findings}
+% VR findings
+Virtual reality technology has made significant strides since its conceptualisation, evolving into immersive experiences that blur the lines between real and virtual environments. 
+Central to the effectiveness of VR experiences are the concepts of presence, interactivity, and immersion. 
+Presence is the sensation of physically existing within the virtual world, influenced both by subjective perceptions and objective indicators. 
+Interactivity allows users to engage dynamically with the virtual environment, enhancing their sense of immersion and agency. 
+Immersion, with its cognitive, emotional, kinesthetic, and spatial dimensions, contributes to a rich user experience across various platforms. 
+Challenges such as simulator sickness highlight the importance of high-performance hardware in maintaining immersion and preventing adverse effects. 
+
+% interaction is also very important in visual analytics
+% interaction creates a much deeper experience for the user whether it is for entertainment or knowledge extraction
+
+% Thus, interactivity serves as a crucial determinant of the overall quality and effectiveness of the user experience, shaping the user's sense of presence, immersion, and agency within the digital realm.
+% Simulator sickness can affect some individuals but can be diminished 
+
+% visual analytics key findings
+% progressive rendering benefits both rendering effeciency and visual analytics
+
+% The user explores the data from a broad overview and refines there search through continually adjusting the subset of data as they explore.
+% From a system efficiency perspective the broad overview is a down-sampled data cube and as the user explores higher resolution portion of the data-set is brought to be visualised.
+% Decreasing the time which the user is waiting for the visualisation as well as decreases the computational load on the system by limiting the amount of data visualised at any point in time.
+
+The integration of visual analytics into data exploration and analysis practices offers a dynamic approach to uncovering insights and patterns within datasets. 
+Through visual representations, analysts are empowered to interact with data, leveraging their inherent pattern recognition abilities to extract knowledge effectively. 
+% For a data-set to be explored effectively there must be some way of interacting with it to facilitate exploration.
+% This is to aid in extracting knowledge from the visualised data-set, and is imperative to the users ability to extract data from a visualisation
+% Whether exploring to construct hypotheses, analysis to validate conjectures, or presentation-focused visualisation for effective communication, 
+The goal of visual analytics is to enhance analytical reasoning and research through interactive visualisations. 
+The efficacy of visual analytics hinges on user interaction, where progressive visualisation plays a pivotal role. 
+It benefits both the flow of exploration for the user as well as the overall functionality of the system.
+By allowing users to steer the representation's progress through data exploration, it facilitates a seamless transition from low-fidelity overviews to detailed insights. 
+This iterative process, supported by techniques such as zooming, filtering, and immersive experiences like VR, enables analysts to navigate complex datasets efficiently. 
+VR offers a compelling avenue for immersive analytics, providing an intuitive environment for multi-dimensional visualisations. 
+By bridging the gap between quantitative data and human perception, VR not only enhances interaction but also enriches the understanding of complex phenomena, fostering a more holistic and user-centric approach to data analysis.
+
+% data visualisation key findings
+% explores how volumetric data can be rendered on a display
+% Volumetric data can be represented as a visualisation using many different techniques, such as points, splats, iso-surfaces, and volumetric rendering.
+% Each technique varies in how much computational resources is required to generate a visualisation.
+% compares techniques such as points, splats, iso-surfaces, and volumetric rendering to determine the positives and negatives of each method
+The data visualisation section \ref{sec:data-visualisation} also discusses the benefits of of using a three-dimensional visualisation rather than two-dimensional views. 
+The visualisation of volumetric data cubes, particularly in fields like astronomy, presents a challenge because the complexity and scale of the datasets involved. 
+These data cubes are essential for understanding phenomena in various scientific disciplines, including astronomy, medicine, oceanography, molecular-modeling, and engineering. 
+Visual representation techniques unlock insights from these datasets.
+
+One of the key objectives of data visualisation is to enable users to explore and understand complex data more deeply while having the means to communicate their findings to others. 
+However, the unique characteristics of radio astronomy data, such as its massive size and dynamic range, present specific challenges for visualisation.
+
+Various visualisation techniques exist, each with its own advantages and limitations. 
+These include points, splats, iso-surfaces, and volume rendering. 
+Among these, volume rendering emerges as the most comprehensive method for representing volume data, providing a detailed view and of external surfaces and internal structures within the dataset. 
+It is resource-intensive, volume rendering offers a robust approach for extracting knowledge from volumetric datasets.
+
+Furthermore, the choice between two-dimensional and three-dimensional visualisations is crucial. 
+While two-dimensional approaches may be enough for certain analyses, three-dimensional visualisations are generally more effective for representing volumetric datasets comprehensively. 
+They reveal hidden features and allow for a more intuitive understanding of the data, enhancing communication of quantitative results.
+
+In summary, effective visualisation techniques are unlocking insights from volumetric datasets in fields such as astronomy. By leveraging advanced visualisation methods like volume rendering and prioritising three-dimensional representations, researchers can better understand complex data and communicate their findings more effectively.
+
+% rendering strategy key findings
+% In the rendering strategy section it was found that it is not enough to simply scale the computational power of a system as the size of data cubes increase, there is a need for a more intelligent strategy to handle the increasing size of the data cubes.
+% It is very inefficient to simply brute-force the generation of visualisations by throwing more computational resources at the issue.
+% The size of the data cubes are increasing in size at a faster rate than the development of the computational power of system, especially devices made for commercial consumption by the mass market. % see if i can find a source for the increase of data in astronomy and computer power
+The rendering strategies section addresses the challenges of visualising large datasets and the strategies that balance computational efficiency with maintaining data integrity and user experience. 
+Traditional approaches, such as brute force visualisation, strain computational resources and impede real-time interaction. 
+To overcome these limitations, progressive visualisation techniques, used by i-Davie, offer a solution. 
+By presenting users with initial down-sampled overviews and enabling them to explore areas of interest in greater detail, these methods optimise processing time without sacrificing accuracy or overwhelming users with excessive information. 
+Moreover, remote rendering strategies, whether server-side or client-side, offer avenues for offloading computational overhead and accommodating datasets larger than the client's resources can handle. 
+However, network bottlenecks and trade-offs between data compression and integrity must be managed carefully to ensure efficient data transfer and timely user feedback. 
+As datasets continue to grow in size, the development of scalable visualisation systems that prioritise both performance and usability remains imperative.
+
+% explore current system which work on the problem of visualising very large volumetric data-sets
+% current systems key finding
+% Some of the current systems that were reviewed produced some key points.
+% Such as the benefits of pre-processing large datasets where the system retrieve higher detail versions of a section of data to provides a speedup with data visualisation.
+% Three-dimensional representations produce a better experience for viewing multi-dimensional datasets and VR displays provide a more intuitive experience when working with multi-dimensional datasets than two-dimensional displays.
+% VR technology also leverages user depth perception and spatial awareness.
+
+% In some current astronomy visualisation systems they attempt to use datasets in the FITS file format to create 3D visualisations. 
+% Implementations produce effective three-dimensional visualisations, however, the Fits file format is not suited for efficient visualisation as the data is stored in sequential slices, like pages in a book. 
+% This makes traversing and extracting data to create the three-dimensional visualisation tedious. 
+% Files can also be too large to be visualised as a whole and whole have to be broken up into more manageable pieces for visualisation.
+% Breaking datasets into pieces runs the risk of obscuring the context of the individual piece and could obscure the insight the dataset would communicate as a whole.
+
+% While building the experimental system E0102-VR~\cite{Baracaglia2019} some insights were found involving the use of VR for viewing and interacting with multi-dimensional datasets.
+% The depth perception provided by VR aids in understanding complex three-dimensional structures and provides means to quickly measure distances and angles in three dimensions.
+
+The review of existing systems has highlighted several key points. 
+For instance, the advantages of pre-processing large datasets, where systems retrieve higher-detail sections of data to expedite data visualisation. 
+Three-dimensional representations enhance the viewing experience for multi-dimensional datasets, and VR displays offer a more intuitive interface compared to two-dimensional displays. 
+VR technology capitalises on user depth perception and spatial awareness, further improving the visualisation process.
+
+Efforts have been made to utilise datasets in the FITS file format to generate 3D visualisations, in system such as \textit{Frelled} and \textit{SlicerAstro}
+While these implementations yield effective three-dimensional visualisations, the FITS file format is not inherently conducive to efficient visualisation because of its storage of data in sequential slices, like pages in a book. 
+This sequential storage method makes traversing and extracting data for three-dimensional visualisation a cumbersome task. 
+Additionally, files may be too large to visualise in their entirety, necessitating the division of datasets into more manageable pieces. 
+However, breaking datasets into fragments risks obscuring the context of individual pieces and potentially diluting the insights the dataset would otherwise convey as a whole.
+
+During the development of the experimental system E0102-VR, valuable insights were gained regarding the utilisation of VR for viewing and interacting with multi-dimensional datasets. 
+The depth perception afforded by VR aids in comprehending complex three-dimensional structures and facilitates rapid measurement of distances and angles in three dimensions.

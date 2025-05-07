@@ -1,0 +1,94 @@
+\section{System Design and Implementation}
+\label{sec:system-design}
+
+% NB be more abstract in this section
+% it sounds like you are talking about something that has already been made
+
+% have a diagram of the system at the to
+% following paragraphs explain the components
+% any diagrams relating to those components go in these paragraphs as well
+
+% explain why we use stuff in the introduction, give context
+
+% explain how everything works in the respective subsection
+
+% what does VRDAVis do
+% it visualises large astronomy datasets
+% using a server to store and process the data and a client to display the data and allow th user to interact and explore the data through a visualisation
+% the server is accessible through the internet
+% the client is also accessible through the internet
+% the client functions within a web browser
+% the client can function on a desktop computer such as a laptop or on a standalone VR headset such as the oculus quest 2
+
+This section explains the design and implementation of the VRDAVis system. 
+It outlines the system's structure and delves into how each component functions, some key language and package choices, as well as some key algorithms. 
+The full source code can be found at the public GitHub repository for VRDAVis~\cite{VRDAVisGitHub}.
+
+% libraries used in project
+The architecture of CARTA was used as a guide for architectural choices and implementation. 
+VRDAVis is a prototype proof-of-concept system, with the goal of potential integration into CARTA as additional functionality. 
+The architecture was kept as similar as possible to allow the systems to be integrated with minimal changes to both systems.
+% explain client-server architecture
+%   server -> hosts, delivers, and manages most of the resources and services requested about the client
+%   client -> presentation
+
+% colour code diagram
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/system-diagram.jpg}
+    \caption{The VRDAVis high-level system architecture, showing the front-end and remote services. The arrows depict communication channels between the components, where the main channels of communication are between the client of the front-end services and the data server of the back-end services, the front-end client and the signalling server, and the VR and Desktop clients.}
+    \label{fig:system-diagram}
+\end{figure*}
+
+The system uses the client-server architecture. 
+With two main subsystems, the front-end and remote services.
+The front-end service only contains the client web browser application.
+This application is used on both the desktop computer and the standalone VR headset. 
+These remote services host, deliver, and manage the resources and services requested by the client. 
+% The data server and the signalling server sub-systems are separate remote systems which serve the client application. 
+% The front-end services controls the majority of the system logic, while also being the main point of interaction between the data visualisation and the user. 
+
+% The rendering approach, where a system like VRDAVis renders the data visualization on the client instead of the server, is referred to as client-side rendering. 
+% A more in-depth explanation about the rendering approach can be found in Section \ref{rendering-strategy}.
+
+Several libraries were evaluated for the development of VRDAVis. These included libraries for embedding VR environments and rendering three-dimensional graphics in a web browser, web-socket and peer-to-peer connections.
+Aspects of these packages and libraries such as functionality, documentation, community support; must be considered before attempting to integrate.
+Selecting a sub-optimal package which is not suited for the needs of the system could have potential cascading effects on the overall design of the system and the project timeline.
+Many of the architectural and system choices were selected because for compatibility with CARTA's architecture, the relevance of each choice will be explain further in the respective sections.
+
+% More details about the respective subsystems are explained in the sections below.
+
+The main decisions in designing and implementing this architecture is deciding which system function are performed by the respective services. 
+Once the system has been implemented, moving a task to a different service could be costly. 
+For this prototype system, only one architecture could be tested, because of time constraints imposed on this research project.
+
+% breifly explain the components of the system and how they work with each other
+% the user side manages system logic and user interaction
+
+The remote and front-end services, with their respective components, work together to create VRDAVis. 
+We explain the functionality starting with front-end service, where the user begins their interaction with VRDAVis.
+
+The web browser application is accessible through the Internet, either on a desktop computer or on a standalone VR headset. 
+The interface allows the user to choose from a list of files available on the data server. 
+These files are pre-processed HDF5 files that store data at various levels of resolution. 
+This allows the browser application to request the same section of a data cube at a higher or lower resolution, and then display the requested data for the user to interact with.
+
+The user can use the file selection UI on a desktop computer or a VR headset, but the embedded VR environment can only be accessed through the browser on the VR headset. 
+Once the file has been selected, a low-resolution version of the entire data cube is requested from the data server. 
+The data is sent from the data server to the browser application, where it is rendered into a visualisation. 
+The visualisation can be viewed from the browser window or from within the VR environment.
+
+However, if the user is viewing the visualisation from a desktop computer and would like to view it from a VR headset, the state of the visualisation can be transferred to the VR headset, and vice versa.
+This process uses a peer-to-peer connection between the two devices to transfer the application's state. 
+This connection is facilitated by the signalling server, which assists with the pairing of the devices as well as automatically establishing a new peer-to-peer connection. 
+The signalling server itself is not involved with the data transfer once the connection is established.
+
+Once the user has entered the VR environment, they can interact with the visualisation using various actions like translation, rotation, and scaling. 
+If the user wants to examine a portion of the data cube in more detail, they can select the crop mode from the menu and draw a cube around the portion they are interested in. 
+Once the area has been finalised and the crop button has been selected, the application determines which cubelets to request from the data server. 
+As they arrive, they are reassembled into a larger cube and rendered. 
+The user can continue to select and crop smaller portions of the visualised cubes until they reach the highest resolution level available for the selected file.
+
+\input{sections/system-design-sections/0-communication-layer}
+\input{sections/system-design-sections/1-remote-services}
+\input{sections/system-design-sections/2-front-end-services}

@@ -1,0 +1,150 @@
+\subsection{Visual Analytics}
+\label{sec:visual-analytics}
+
+Visual analytics is the practice of analysing datasets using visual representations of the data, these representations are the individual data points of the dataset mapped using a particular visualisation strategy \cite{Bikakis2018}. 
+% Offer benefits such as visual perception, interactive exploration, improved understanding, informed steering, and intuitive interpretation~\cite{Li2016}.
+
+Visualisations facilitate the emergence of patterns as they are explored by analysts, typically domain experts, enhancing accessibility, interpretation, and meaningful analysis of data~\cite{Lowe2020, Tukey1977} through interactive engagement with diverse tools.
+These visualisations are made with goals in mind, which can be exploitative, confirmatory or for presentation~\cite{keim1997}.
+Exploitative analysis involves undirected interaction with data which does not have a hypothesis attached to the exploration.
+This type of analysis is done to construct a possible hypothesis relating to the data.
+In contrast to confirmatory analysis has a more goal-oriented approach; the purpose of the exploration or examination of the data is to confirm or reject a hypothesis.
+This is for the purpose of either confirming or rejecting the hypothesis.
+The goal of presentation differs from the goal of a hypothesis where it is only concerned with the technique it uses to present the data to best represent the facts it wishes to communicate.
+Human analysts are naturally equipped with sophisticated pattern recognition abilities~\cite{Hassan2011, Taylor2015, Sneiderman1996}, and applying these skills while interacting with data visualisations facilitates knowledge extraction~\cite{Caldarola2017, Yi2007, Becker1987, Glueck2014, Bikakis2018, Muhlbacher2014, Shneiderman2008}.
+Large datasets within the Big Data field require analysts' cognitive abilities to make sense of the data, using perceptual grouping, image segmentation, and object recognition~\cite{Lowe2020}.
+These skills allow elements such as clustering, outliers, patterns, and correlations between characteristics become apparent.
+A visualisation can communicate the essence of a dataset quickly and effectively regardless of size~\cite{Fisher2012}.
+The aim of visual analytics is to support the analysts' analytical reasoning and research with interactive visualisations of datasets~\cite{Tufte1983, Ali2016, Becker1987}.
+
+For the users to explore the visualised datasets there must be some interactions they can perform to affect the representation~\cite{Yi2007} without interaction the representation would be a static image~\cite{Becker1987}.
+Static images do offer value in visual analytics, but this value is limited once the dataset exceeds a certain size and the granularity of the data becomes too fine.
+Interactions performed on the representation must produce an instantaneous change in the visualisation to maintain the user's attention.
+There is a threshold of 10ms or less between interaction input and response to facilitate an uninterrupted dialog between the user and the data~\cite{Glueck2014, Li2016, MacKenzie1993, Muhlbacher2014}.
+% \cite{Li2016, Zhao2017, MacKenzie1993, Becker1987}
+% Visualisation system should retreive data fast enough so that the analist does not lose interest or lose a train of thought (focus and momentum)
+% minimise the user's waiting time as much as possible
+
+\subsubsection{Progressive visualisation}
+As a user analyses a representation of the dataset, the visualisation should allow the user to steer the appearance of the visualisation through interaction and should also allow them to drill down into areas of interest within the data.
+This is the process of progressive visualisation where initially a low fidelity representation is displayed and as it is explored, higher fidelity data is brought into the visualisation~\cite{Zhao2017, Ahrens2005, Rosenbaum2009, Li2016, Tufte1983}.
+% To understand the context of the data it is more important to get a broad overview of the data than exact figures.
+The user steers the visualisation's progression through the data and the visualisation changes as they explore the data~\cite{Zhao2017, Muhlbacher2014, Fisher2012}.
+% Displaying  a  low  fidelity  representation  prior  to  loading  a high  fidelity  version  has  long  been  utilised  to  ensure  responsive  interaction  [4,14,19]. % check refs
+% \cite{Zhao2017}
+% progressive visualisation / progressive visual analytics
+% produce intermediate results of the visualisation as the user explores the dataset
+% the dataset can be sampled randomly to make these progressive visualisation or it can be arranged in a heirchical format.
+The data stored at different levels of fidelity are pre-processed into a hierarchical order so that required data can be found easily~\cite{Glueck2014}.
+% This method of storing data aligns with the exploration process the user undergoes when interacting with the visualisation~\cite{Rosenbaum2009}, the whole dataset is first shown to the user, and as they explore the model increases in resolution as they zoom in on areas of interest.
+Pre-processing data used for visualisation can dramatically improve the user experience~\cite{Shneiderman2008}.
+% Visualisation tools should give the user a high level overview initially and subsequently load more data as the user explores areas of interest~\cite{Li2016, Tufte1983}.
+Some of the visualisation tools for interactions should include scaling, translation, rotation, filter, overview, and detail-on-demand~\cite{Zhao2017, Becker1987, Sneiderman1996, keim1997, Baracaglia2019, Ferrand2016}. 
+%overview first, zoom and filter, then details on demand
+% In three-dimensional datasets these interaction translation, rotation, croping, measurement and transparency \cite{Baracaglia2019, Ferrand2016}.
+
+Scaling data correctly is important for lower-powered devices such as the VR headset and personal laptop computers, as they have comparatively fewer computational resources available.
+The visualisation of points which translates to a size which is smaller than a single pixel on a screen is a waste of resources and should be minimised~\cite{Li2016, ertl1999}.
+
+% \cite{Fisher2012}% information visualization, large amounts of quantitative data can be shown in a limited space
+% graphical display extended to visualisations should
+%   show the data
+%   induce the viewer to think about the substance rather than about methodology, graphic design, the technology of graphic production, or something else
+%   avoid distorting the message in the data
+%   present a large amount of data in a small space
+%   make large sets coherent
+%   encourage the eye to compare different pieces of data
+%   reveal the data at several levels of detail, from broad overview to fine structure
+%   serve a reasonably clear purpose: description, exploration, tabulation, or decoration
+%   be closely integrated with the statistical and verbal descriptions of the dataset
+
+\subsubsection{Virtual reality in visual analytics}
+Human eyes are naturally suited for three-dimensional space are more in accustomed to interacting with three-dimensional objects and VR simulates this interaction~\cite{Ferrand2018, Abidi2017}.
+VR headsets provide an inexpensive and portable environment for multi-dimensional visualisations, which provides the ability to interact with the visualisation.
+Three-dimensional data visualised in three-dimensional space grant a holistic view of the of the data~\cite{Ferrand2016, Farr2009}.
+An effective visualisation bridges the gap between the data contained in datasets and the human ability to extract knowledge.
+The stereoscopic environment produced by a VR headset such as the Oculus Quest 2 allows the user to see the data with a perception closer to a real-world environment, fostering user friendly interaction which resembles interaction in the real world.
+% The VR headset also track the user's movement adding an extension of self into the VR environment for increased immersion
+% While building the experimental system E0102-VR~\cite{Baracaglia2019} some insights were found involving the use of VR for viewing and interacting with multi-dimensional datasets.
+% The depth perception provided by VR aids in understanding complex three-dimensional structures and provides means to quickly measure distances and angles in three dimensions.
+
+% \cite{Ferrand2016}
+% major challenges faced by astronomers is to digest the large amount of diverse data generated by modern instruments or simulations
+% develop visualization tools that allow exploration of all their complexity and dimensions
+% interested in displaying the 3D data in actual 3D space, to get a holistic view, in the expectation that this will generate a more correct perception, and help build an intuition, of the data.
+% user friendliness - developing interfaces allowing for Natural User Interaction (NUI) in 3D is still an active ﬁeld of research
+% ﬂat display of a desktop or mobile computer, the visualization is limited to 2D views: slices and projections, that have to be ﬂipped through, or a fake 3D view, emulated with tricks like per- spective and shading.
+% Stereoscopic 3D can be achieved using dual projectors, that present a slightly diﬀerent image to each eye
+% The 3D displays we are considering here bring something more: the tracking of the viewer (commonly using infrared cameras), which makes the experience distinctively diﬀerent. First this enables motion parallax, which gives a much stronger depth cue, and second this allows direct interaction with what is being displayed. Depending on the hardware used, one can get the feeling of being fully immersed inside the data cube, as if it was a physical object that we can explore and manipulate.
+% 3D displays for Virtual Reality come broadly into two categories: “ﬁsh tanks”, systems where the user is looking at a ﬁxed screen or set of screens that deﬁne the boundaries of a virtual volumetric screen, and head-mounted displays (HMD), systems where the user is wearing a pair of screens attached directly in front of their eyes.
+% serious applications in the medical and architectural ﬁelds, with also several experiments in the natural sciences: biology, geology, meteorology.
+% ray casting: for each pixel to be rendered on the screen, a ray is cast along the current line of sight, and along this ray the data is retrieved at regularly spaced intervals. The values are accumulated along the line of sight using the standard radiative transfer approximation: the value at a point (understood here as a voxel) is interpreted as both an emissivity (added to the R, G, B channels) and an opacity (using the alpha channel to handle transparency)
+
+% \cite{Ferrand2018}
+% visualisation is important for exploring as well as the communication of data
+% astronomy uses 3D data sets
+% humans are more in tune to interact with 3D objects
+% VR facilitates this interacting
+
+% \cite{ertl1999}  hierarchical methods for visualisation of volume data
+% basically introduces a hierarchical structure to the volume data so that it takes less time and memory to create a visualisation
+% The standard model of this process comprises a pipeline of three stages. The filter stage is a preprocessing step converting the raw input data into visualization data which is usually reduced by operations like sampling, slicing, cropping, etc. The mapper stage performs a mapping of the abstract data fields into a visual representation consisting of geometric primitives like points, lines, surfaces or voxels and associated graphical attributes like color, transparency, texture, etc. The renderer, finally, uses this scene description to generate images by means of 3D graphics APIs such as OpenGL or OpenInventor, possibly exploiting 3D graphics hardware to achieve interactive frame rates.
+% the user has to be given control over the threshold letting him choose between a fast visualization of a very crude approximation of the data and an almost perfect representation of the data which took perhaps minutes to compute. This requirement can only be met if not only one compressed version of the data, but a complete hierarchy of representations of the data set at different levels of resolution is available or can be generated on the fly.
+% Direct volume rendering tries to convey a visual impression of the complete 3D data set by assigning different color and opacity values to different objects or value ranges within the volume. The resulting image is then computed by taking into account the so-defined emission and absorption effects as seen by an outside viewer. 
+% Hierarchical approaches
+%   
+
+% \cite{keim1997}
+% goals of visualisation
+%   explorative analysis
+%       start -> data without hypotheses about data
+%       process -> interactive, undirected search for structures, trends, etc.
+%       result -> visualisation of data, which provides hypotheses about data
+%   confirmative analysis
+%       start -> hypotheses about data
+%       process -> goal orienatated examination of the hypotheses
+%       result -> visualisation of data,which allows the confirmation or rejection of the hypotheses
+%   presentation
+%       start -> facts to be presented
+%       process -> choice of presentation technique
+%       result -> high quality visualisation of data presenting facts
+
+% classifications of data visualisation techniques
+%   geometric techniques -> scatterplots, landscapes, parallel coordinates
+%       visualization of geometric transformations and projections of the data.
+%   icon-based techniques -> stick figures, color icons, shape-coding
+%       Visualization of the data values as features of icons.
+%   pixel-orientated techniques -> spiral- , axes-techniques, recursive pattern techniques
+%       each attribute value is represented by one colored pixel ( the value ranges of the attributes are mapped to a fixed colormap)
+%       the attribute values for each attribute are presented in separate subwindows
+%   hierarchical techniques -> treemap, dimensional stacking
+%       Visualization of the data using a hierarchical partitioning into subspaces.
+%   graph-based techniques -> basic graphs
+%       Visualization of large graphs using techniques to convey the meaning of the graph clearly and quickly.
+
+% Dynamic interaction techniques
+% Dynamic generation of the visualizations or interaction with the visualization for a more effective exploration of the data
+%   data-to-visualisation mapping
+%   projections
+%   filtering (selection, querying)
+%   linking, brushing
+%   zooming
+%   detail on demand
+
+% data pre-processing techniques
+%   Dimension reduction techniques
+%       principal component analysis -> Determines a minimal set of principal components (linear combinations of the original dimensions) which explain the main variations of the data.
+%       factor analysis -> Determines a set of unobservable common factors which explain the main variations of the data. The original dimensions are linear combinations of the common factors.
+%       Multidimensional Scaling -> Uses the similarity (or dissimilarity) matrix of the data as defining coordinate axes in multidimensional space. The Euclidean distance in that space is a measure of the similarity of the data items
+%       fatsmap -> Fastmap also operates on a given similarity matrix and iteratively reduces the number of dimensions while preserving the distances as much as possible.
+%   Subsetting techniques
+%       (Set of Data Items -> Subset of Data Items)
+%       Sampling (determines a representative subset of the database
+%       Querying (determines a certain, usually a-priori fixed subset of the database)
+%   Segmentation techniques
+%       (Set of Data Items -> Set of (Set of Data Items)
+%       Segmentation based upon attribute values or attribute ranges
+%   Aggregation Techniques
+%       (Set of Data Items -> Set of Aggregate Values
+%       Aggregation (sum, count, min, max, ...) based upon attribute values, opological properties, etc.
+%       Visualizations of Aggregations: Histograms, Pie Charts, Bar Charts, Line Graphs, etc

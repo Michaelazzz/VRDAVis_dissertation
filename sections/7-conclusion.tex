@@ -1,0 +1,135 @@
+\section{Conclusion}
+\label{sec:conclusion}
+% reiterate questions
+% Can an astronomy visualisation system using volumetric rendering by a VR device be implemented as a remote visualisation system with the proposed system architecture? How does it perform under production tests?
+The first research question asks if the proposed architecture is appropriate for the goals of the system, which is to view three-dimensional visualisations of radio astronomy data and to interact with the visualisation within a VR environment.
+
+VRDAVis implements a client-side rendering architecture which sends data from a remote server to a user application.
+The data is then rendered in the user application on a client device.
+The client device, which is a low to mid-range laptop or a Oculus Quest 2 VR headset.
+The visualisation rendered on the client is dependent on the processing power of of the client device, and these devices are comparatively lower-powered in comparison to the dedicated systems which render full-resolution data cubes.
+This resource constraint limits the amount of data that the client device can receive and process before its performance is negatively affected.
+Unsatisfactory client performance puts the user at risk of simulator sickness, which is unacceptable.
+The amount of data that is sent to the client device is therefore limited.
+This limited amount is adjusted to fit the computational capabilities of most client devices.
+This ensures that the client will only have to process a fixed amount of data at any given time.
+The same amount of data will be sent to the client at any given point in time regardless of the size of the full resolution data cube stored in the remote server.
+% that the client device will only need to process a comparatively small amount of data compared to full size of the data-cube.
+
+The data requested by the client system is stored as a pre-processed file in a remote server.
+Mipmaps are used to store data at various resolution levels, from full resolution broken up into fixed sized cubelets to the full data cube compressed into a single cubelet.
+This means that the client system can request cublets at an appropriate level which will not overwhelm the client device with too much data.
+This pre-processing of large data files is vital to the operation of the VRDAVis system, as this allows the client to retrieve the data that is needed at that point in time.
+
+Compressing the data before it is sent to the client device reduces the amount of data transferred over the internet.
+The time the client is waiting for data is then dependent on the bandwidth of the network connection, reducing the amount of data sent over the connection reduce the amount of time it takes to reach the client.
+The amount of time the user waits before continuing their interactions is reduced because of the reduced amount of data.
+% it takes less time to transfer the data when the amount of data which needs to be transferred is smaller
+The caching system, although underutilised, allows the system to load data from the cache instead of making a request to the data server when that cubelet is needed.
+Making a request to the server and waiting for the data to arrive requires much more time than fetching the locally stored cubelet from cache.
+The caching system also stops the web application from fetching the same piece of data more than once.
+% and therefore reduces the time the client has to wait to produce a visualisation.
+
+None of the users noted that their workflow was interrupted by the need to wait for for the data to be transferred from the server and then processed into a visualisation on the VR headset.
+Therefore, this system architecture has shown that it implements a capable strategy for exploring very large data cubes.
+
+% not fit inside the memory of a VR device or desktop computer?
+% Can the system produce performance metrics within certain thresholds when presented with a data cube several times the size of the device's memory?
+% such as the Oculus Quest 2, without having a co-located computer take on the majority of the computational workload?
+The second question asks if the system can generate the visualisations and handle user interaction without the assistance of specialised hardware such as a co-located computer.
+
+The system's performance remained steady across cube of varying sizes.
+Interaction time also remained consistent regardless of the size of the cube being accessed on the remote server.
+The participants did not highlight any major performance issues while viewing the data cube within the VR environment.
+They also noted that there was no frame-rate lag while they were using VRDAVis.
+Although the visualisation which VRDAVis produced was not as high-quality as the visualisation i-Davie produced, they still found it satisfactory for viewing the internal structures of the data-cube and interacting with the visualisation.
+The feedback from the participants noted satisfactory visualisation and interaction quality on the standalone headset.
+Therefore, the VRDAVis system can produce quality visualisations and handle user interactions without the need for a co-located computer to perform processing.
+
+% How does the proposed system using a standalone headset client, such as the Oculus Quest 2, compare to a system using a co-located computer to take on the majority of the computational workload?
+The final question asks how VRDAVis compares to a system with similar functionality.
+The visualisation system i-Davie was selected for this comparison, as there were many test participants available who had experience using the i-Davie system.
+
+The main comparison mentioned by participants in the evaluation were the user interface, controls, visualisation quality, workflow, system maturity, and usability.
+
+Participants found i-Davie's controls more intuitive and streamlined compared to VRDAVis. 
+They mentioned that the action of grabbing and interacting with data in i-Davie felt more natural.
+Participants noted some initial difficulties with the controls in VRDAVis, such as zooming, rotating, and moving the menu. 
+However, they also acknowledged that some of these issues come from the learning curve of becoming acquainted with a new system and could be overcome with some practice.
+
+The visual clarity and resolution of data in i-Davie was considered to be of better quality than in VRDAVis. 
+This was attributed to i-Davie running on a higher-powered computer, which allowed for more detailed and clearer visualisations.
+While the visualisation quality in VRDAVis was considered good, it was noted that the system did not have sufficient contrast for the details to be seen clearly.
+
+Loading large data cubes into i-Davie was described by the participants as time-consuming. 
+However, once the data was loaded, the system's capabilities and features were appreciated.
+Participants appreciated the workflow presented by VRDAVis, which allowed for seamless transitions between the desktop computer and the VR headset. 
+They found this ability to move quickly between devices to be a significant advantage, which made it easier to visualise data in VR quickly without the need for prolonged loading times.
+
+i-Davie was considered to be the more mature and feature-rich system with advanced data manipulation tools and analytics.
+VRDAVis was recognised as an experimental system, still in need of further development. 
+Participants acknowledged its potential and the advantages of VR visualisation but noted that it lacked some of the advanced features and polish of i-Davie.
+
+Participants felt more comfortable using i-Davie because of familiarity and a more refined user interface. 
+The learning curve was described as less steep for those already accustomed to the system.
+Although some participants experienced a learning curve, they found that VRDAVis became more manageable with use and enjoyed the seamless seamless workflow with the advantages of VR for immersive data exploration. 
+Future improvements in interface design, visualisation quality, and feature expansion could mature VRDAVis into a system similar to i-Davie.
+
+In conclusion, VRDAVis fulfils its goals as a system for exploring large astronomy data cubes, as it implements an architecture which maintains a standard of performance across various large data cubes on lower-powered hardware such as laptops and VR headsets, particularly the Oculus Quest 2.
+While user testing confirmed its functional similarity to a mature system such as i-Davie, it also acknowledged that VRDAVis is experimental and not yet ready to be used in a research context.
+The VRDAVis system requires more development to add more features and improve the existing ones.
+
+\subsection{Future Work}
+Because of the time constraints imposed on the development of the prototype system, decisions about the system architecture had to be made prior to implementation.
+Some of these decisions might not have been optimal in hindsight, but were chosen as they still fulfilled the project's objectives.
+Some of the problems encountered during the development process could be addressed through more development iterations.
+
+\paragraph{User Interface Improvements}
+It was found that the VRDAVis system would benefit from some general polish to the user interface in the VR environment.
+The user interface elements would sometimes interfere with some of the user's actions, causing some frustration.
+Participants also mentioned difficulties with initial handling, such as zooming, rotating the data, and moving the menu. 
+Making these controls more intuitive and user-friendly would improve the overall experience.
+Also, ensuring that buttons and controls are not obstructed by the cube or other elements would enhance usability. 
+This includes repositioning or redesigning interface elements to prevent accidental activation.
+
+Even though the user can see the larger context of the dataset during the initial visualisation, the context can still be lost as the user drills further into the dataset.
+A mechanism for keeping track of where the user is within the larger context of the data cube could help alleviate confusion from the user's perspective.
+
+\paragraph{Visualisation Enhancements}
+A common request was for the contrast and clarity of the visualised data to be improved, especially for high-density and low-density features. 
+This involves the implementation of a more advanced and interactive colour transfer function to manipulate the appearance of the visualisation.
+
+\paragraph{Feature Expansion}
+The addition of more features could be added for data manipulation, such as advanced cropping options, moment maps, and the ability to adjust visualisation parameters within the VR environment.
+As well as a feature providing options to view both masked and unmasked data.
+
+\paragraph{Workflow Optimisation}
+Participants appreciated the ability to transfer state between devices.
+However, the state transfer is only supported in one direction, and the user must transfer the state manually using interface commands.
+To improve on this feature must be expanded to include more variables, support bidirectional transfer, and sync automatically when the state changes, without the need for user intervention.
+% expand on the peer-to-peer functionality
+%   allow the headset to send data back to the computer
+The efficiency data loading can also be improved, if users are provided an option to upload their own data.
+This would reduce the reliance on middlemen to upload and process the data for the users.
+Participants noted that i-Davie sometimes takes a long time to load data, so optimising this process for VRDAVis would be beneficial.
+
+\paragraph{Stability and Performance}
+% the browser application can be unstable at times and requires a refresh if an error occurs
+Some technical issues around system stability need to be addressed to ensure that the system runs smoothly without the need for constant reloading.
+An area that requires notable improvement is the cropping functionality, the main problem is that the algorithm used to selected the required cubelets is not robust enough.
+
+The current implementation of this algorithm is somewhat rudimentary and does not account for some corner cases.
+It attempts to select cubelets which do not exist in the bounds of the preprocessed data cube and in some cases the cubelets fetched does not match the space the user selected in larger cube.
+Also, considering the limitations of VR hardware compared to higher-powered computers, future iterations must find ways to optimise the system to run more efficiently on VR headsets.
+
+The cache system implemented in the front-end services was not effectively utilised.
+This is because the system does not allow the user to zoom out of the visualised data-cube, only to zoom in.
+This means that the cache system continuously fetched new data and did not utilise data already in cache.
+The cache system was also reset often because the system was at times unstable and required many refreshes to reset the web application.
+
+\paragraph{Iterative Development}
+Integration with a production system will need to address the issues uncovered during the evaluation.
+Continuous development with continuous integration with more user testing and feedback would incrementally improve upon shortcomings.
+The continuous incorporation of user feedback must be included into the development cycle to refine and improve the system.
+Placing users at the centre of the development process will ensure that the system is considered usable.
+This type of development cycle is much more in line with how production software and systems are currently made.

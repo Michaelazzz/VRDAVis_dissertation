@@ -1,0 +1,96 @@
+\begin{abstract}
+\label{sec:abstract}
+% introduce the research problem
+
+% this dissertation examines challenges of visualizing vast astronomy data cubes using a virtual reality (VR) environment 
+% the increasing volume of data collected by radio astronomy instruments introduces into the analysis process of radio astronomy researchers, and attempts to introduce VR into researchers' workflow
+% visual anlysis by researches is an important part of radio astronomy research
+% the analysis invloves visualisations of data collected by instruments such as telescopes
+% the amount of data these instruments collect increases year-on-year
+% collecting tera-bytes to peta-bytes of data at a time
+% the sheer amount of data makes processing, storing and analysing the data increasingly difficult
+% the amount of data produced by the instruments far exceeds the computational capabilities of devices such as laptop or home desktop computers
+% traditional astronomy visualization tools are often inadequate due to the size and complexity of the data
+% specialised systems are required to view the data in it's entirety
+% in order for researches to analyse the data they either have to gain access to a specialised system or examine one small portion of the data at a time.
+% The specialised systems are usually locked to a location, making them inaccessible to most researchers, and examing one small portion of the data at a time has the potential to obscur its context within the larger dataset
+
+This dissertation explores the challenges of visualising vast astronomy data cubes using a virtual reality environment, addressing the ever-increasing volume of data collected by radio astronomy instruments. 
+As the amount of data grows year after year—ranging from terabytes to petabytes—radio astronomy researchers face significant difficulties in processing, storing, and analysing this immense data. 
+The visual analysis of the collected data is a crucial part of radio astronomy research. 
+Traditional visualisation tools are often inadequate due to the size and complexity of the data.
+The Data far exceeds the computational capabilities of devices like laptops or home desktop computers.
+Researchers are often required to either access specialised systems or analyse small portions of the data at a time.
+Specialised systems are typically locked to specific locations and inaccessible to many, and segmenting the data can obscure the broader context of a dataset.
+These points highlight the need for a new approach to overcome the presented limitations.
+
+% clearly state the research objectives
+% The objective of the research is to develop a prototype system 
+% that allows the visualization of large astronomy data cubes in VR, using a standalone VR headset
+% the system is designed to operate on devices with limited computational power, such as laptops and VR headsets
+% the research questions explore aspects, such as remote implementation, scalability for large datasets, and a performance comparison with existing systems
+
+The objective of this research is to develop a prototype system that enables the visualization of large astronomy data cubes in a virtual reality environment using a standalone VR headset. 
+The system is specifically designed to operate on devices with limited computational power, such as laptops and VR headsets.
+Making it accessible to a wider range of users. 
+The research addresses key questions, including the feasibility of remote implementation, the scalability of the system for handling large datasets, and a performance comparison with existing astronomy visualisation systems.
+
+% methods
+The VRDAVis system design follows a client-server architecture, where the client-side communicates with the server to visualise large astronomy data cubes. 
+These client devices are either a computer or stand-alone VR headset.
+The system pre-processes the data into multiple resolution levels, these levels are referred to as mipmaps, to reduce the computational load on the client. 
+The front-end, built as a web-based application, allows users to select data cubes and progressively visualise different levels of detail.
+The resolution levels start from a low-resolution overview to higher resolution as a user zooms in on areas of interest. 
+The client and server communicate via WebSockets, and WebRTC is used for peer-to-peer connections when transferring the application's state between devices (e.g., from desktop to VR). 
+
+% evaluation
+% to test the implementation of the VRDAVis system a qualitative analysis was done
+% the participants were astronomy researchers who are both familiar with VR technology and another system which utilises VR to visualise and analyse astronomy data
+
+The VRDAVis system was tested through an qualitative study, with participants who were astronomy researchers familiar with Vr technology.
+The participants were asked to perform various actions using VRDAVis. 
+The tasks involved selecting a file on the laptop, transferring the session to the VR headset, and interacting with the data cube. 
+Key findings were gathered from user feedback, focusing on their experience with the system’s usability, interaction with the visualizations, and the overall workflow. 
+Observations on task performance and any difficulties encountered were also collected, along with participants' impressions of working in the VR environment.
+
+% key findings
+% the Client-Server Architecture Supports Large Data Handling where the system uses a client-server model to offload computations to the server, allowing the client to focus on rendering the visualizations, ensuring smoother performance
+% Mipmap Approach Enhances Performance where pre-processing the astronomy data cubes into multiple resolution levels (mipmaps), the system reduces computational overhead and improves the ability to explore and visualize datasets progressively
+% The system successfully scales to handle very large data cubes that are several times larger than the memory of the device used for visualization (e.g., a VR headset), making it possible to visualize vast datasets efficiently
+% VRDAVis can function as a remote application, enabling seamless interaction between the client and server over the internet. This architecture aligns well with astronomy researchers' needs for remote data analysis.
+% The prototype system is compared to i-Davie, another astronomy data visualization tool. While i-Davie uses a co-located computer for computations, VRDAVis achieves similar functionality with a fully remote, standalone VR solution
+% The qualitative user evaluation indicates positive feedback regarding the usability, performance, and experience of VRDAVis, especially in comparison to traditional visualization methods.
+% Potential for Further Integration with CARTA
+% The system is designed with potential integration into CARTA (Cube Analysis and Rendering Tool for Astronomy), leveraging a similar architecture to extend functionality for remote visualization
+% The use of three-dimensional visualization techniques in VR enhances astronomers' ability to interact with and understand the data in ways that two-dimensional screens do not, especially for identifying hidden structures within the datasets
+
+The key findings highlighted:
+\begin{itemize}
+    \item The client-server architecture supports large data handling by offloading computational tasks to the server.
+    \item Mipmaps enhances system performance by limiting the amount of data the system processes, further reducing computational overhead and improves the ability to explore and visualise datasets progressively.
+    \item The system successfully scales to handle very large data cubes that are several times larger than the memory of the device used for visualisation, making it possible to visualise vast datasets efficiently.
+    \item VRDAVis can function as a remote application, enabling seamless interaction between the client and server over the internet.
+    \item VRDAVis achieves similar functionality when compared to a system like i-Davie, while i-Davie uses a co-located computer, VRDAVis is a fully remote system.
+    \item The qualitative user evaluation indicates positive feedback regarding the usability, performance, and experience of VRDAVis.
+    \item The use of three-dimensional visualisation techniques in VR enhances astronomers' ability to interact with and understand the data in ways that two-dimensional screens do not, especially for identifying hidden structures within the datasets.
+\end{itemize}
+
+% conclusions
+% The VRDAVis system successfully implements a client-side rendering architecture that allows the visualization of large radio astronomy data cubes on devices with lower computational power, such as laptops and standalone headsets. This architecture ensures that the data sent to the client is scaled appropriately to prevent performance degradation and reduce risks such as simulator sickness.
+% A key aspect of the system's success is the use of pre-processed data, with mipmaps stored at various resolution levels. This approach allows the client to request and visualize smaller, manageable data segments without overwhelming the device, maintaining system performance.
+% Data compression effectively reduces the time needed for transferring data from the server to the client. This architecture minimizes interruptions in user workflows caused by long data loading times.
+% The limitations of lower-powered client devices (like laptops and VR headsets) are mitigated by adjusting the amount of data processed to fit within the device's capabilities. This ensures that client performance remains stable, despite handling large datasets.
+% The system demonstrated the ability to function effectively without the need for high-powered hardware (e.g., a co-located computer), relying instead on a remote server to handle the heavy lifting.
+% Although VRDAVis is functionally similar to more established systems like i-Davie, it remains an experimental tool. The system needs further development to add features and refine its functionality before it can be fully integrated into research environments.
+
+The VRDAVis system implements a client-side rendering architecture that allows for the visualization of large radio astronomy data cubes on devices with limited computational power, such as laptops and stand-alone VR headsets. 
+This architecture ensures that the data sent to the client is scaled appropriately, preventing performance degradation and reducing risks like simulator sickness. 
+A crucial element of the system’s success is its use of pre-processed data. 
+This enables the client to request and visualise smaller, manageable data segments, maintaining overall system performance without overwhelming the device. 
+Data compression is used to minimise the time required to transfer data from the server to the client, reducing interruptions caused by the user waiting for data. 
+The system effectively mitigates the limitations of lower-powered devices by adjusting the amount of data processed to fit within the device's capabilities, ensuring stable client performance even when handling large datasets.
+VRDAVis has demonstrated its ability to function without the need for high-powered hardware, relying on a remote server to handle computationally intensive tasks. 
+While functionally similar to established systems like i-Davie. 
+VRDAVis remains experimental and requires further development to refine its features and functionality before it can be fully integrated into research environments.
+
+\end{abstract}
